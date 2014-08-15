@@ -1,0 +1,26 @@
+{
+  "name": "bootstrap-for-shopify",
+  "version": "4.0.0",
+  "homepage": "http://bootstrapforshopify.com/",
+  "description": "Build Shopify Themes using Bootstrap.",
+  "keywords": "Shopify, Bootstrap",
+  "license": "Restricted",
+  "author": "Gavin Ballard <gavin@bootstrapforshopify.com> (http://bootstrapforshopify.com)",
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-contrib-sass": "latest",
+    "grunt-contrib-less": "latest",
+    "grunt-contrib-copy": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-compress": "latest",
+
+    "bower": "latest"
+  }
+}
