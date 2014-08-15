@@ -1,0 +1,20 @@
+{
+  "general": {},
+  "blogs": {},
+  "collections": {},
+  "products": {},
+  "contact": {},
+  "customer": {
+    "account": {
+      "my_account": "Min Konto",
+      "log_in": "Logga In",
+      "log_out": "Logga Ut"
+    }
+  },
+  "gift_cards": {},
+  "home_page": {},
+  "cart": {
+    "cart": "Kundvagn"
+  },
+  "layout": {}
+}
