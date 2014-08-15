@@ -1,0 +1,22 @@
+{
+  "name": "bootstrap-for-shopify",
+  "version": "4.0.0",
+  "homepage": "http://bootstrapforshopify.com",
+  "authors": [
+    "Gavin Ballard <gavin@bootstrapforshopify.com> (http://bootstrapforshopify.com)"
+  ],
+  "description": "Build Shopify themes with Bootstrap.",
+  "keywords": [
+    "Bootstrap",
+    "Shopify"
+  ],
+  "license": "Restricted",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
