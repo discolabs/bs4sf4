@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="{{ shop.name }}">
+
+    <!-- Stylesheets -->
+    {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
+
+    <!-- Head Snippets -->
+    {% include 'head-seo' %}
+    {% include 'head-open-graph' %}
+
+    <!-- Required Shopify Header Tags -->
+    {{ content_for_header }}
+  </head>
+  <body>
+
+    {{ content_for_layout }}
+
+    <!-- Javascript -->
+    {{ 'jquery.min.js' | asset_url | script_tag }}
+    {{ 'bootstrap.min.js' | asset_url | script_tag }}
+  </body>
+</html>

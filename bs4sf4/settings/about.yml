@@ -1,4 +1,11 @@
 ---
-about: |
-  <p>Thanks for using this theme! Support is available at <a href="support@example.com">support@example.com</a>.</p>
-  <p><small>This theme is based on <a href="http://bootstrapforshopify.com">Bootstrap for Shopify</a>.</small></p>
+about:
+  heading: Bootstrap for Shopify by <a href="http://gavinballard.com">Gavin Ballard</a>
+  content: |
+    <p>
+      Welcome to Bootstrap for Shopify! You'll probably want to update this message in your own theme and provide a
+      link to your support pages or email, <a href="mailto:support@example.com">like this</a>.
+    </p>
+    <p>
+      <small>This theme is based on <a href="http://bootstrapforshopify.com">Bootstrap for Shopify</a>.</small>
+    </p>

@@ -1,10 +1,5 @@
 module.exports = (grunt) ->
 
-  # A small helper method that renames layout, snippet and template files for use in a single directory.
-  rename = (dest, src)->
-    path = require('path')
-    path.join(dest, src.replace(path.sep, '-'))
-
   # Initialise the Grunt config.
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
@@ -31,26 +26,37 @@ module.exports = (grunt) ->
         files:
           'theme/config/settings.html': 'settings/*.yml'
 
-    # Copying of various liquid template files.
+    # Copying of various theme files.
     copy:
-      layouts:
-        expand: true
-        cwd: 'layouts'
-        src: '**/**.liquid'
-        dest: 'theme/layouts'
-        rename: rename
       snippets:
         expand: true
         cwd: 'snippets'
         src: '**/**.liquid'
         dest: 'theme/snippets'
-        rename: rename
+        rename: (dest, src)->
+          path = require('path')
+          path.join(dest, src.replace(path.sep, '-'))
+      layout:
+        expand: true
+        cwd: 'layout'
+        src: '*.liquid'
+        dest: 'theme/layout'
       templates:
         expand: true
         cwd: 'templates'
-        src: '**/**.liquid'
+        src: '*.liquid'
         dest: 'theme/templates'
-        rename: rename
+      locales:
+        expand: true
+        cwd: 'locales'
+        src: '*.json'
+        dest: 'theme/locales'
+      jquery:
+        src: 'bower_components/jquery/dist/jquery.min.js'
+        dest: 'theme/assets/jquery.min.js'
+      bootstrapjs:
+        src: 'bower_components/bootstrap/dist/js/bootstrap.min.js'
+        dest: 'theme/assets/bootstrap.min.js'
 
     # Watch task.
     watch:
@@ -60,15 +66,18 @@ module.exports = (grunt) ->
       settings:
         files: ['settings/*.yml']
         tasks: ['shopify_theme_settings']
-      layouts:
-        files: ['layouts/**/**.liquid']
-        tasks: ['copy:layouts']
       snippets:
         files: ['snippets/**/**.liquid']
         tasks: ['copy:snippets']
+      layout:
+        files: ['layout/*.liquid']
+        tasks: ['copy:layout']
       templates:
-        files: ['templates/**/**.liquid']
+        files: ['templates/*.liquid']
         tasks: ['copy:templates']
+      locales:
+        files: ['locales/*.json']
+        tasks: ['copy:locales']
 
   # Load tasks made available through NPM.
   grunt.loadNpmTasks 'grunt-contrib-concat'

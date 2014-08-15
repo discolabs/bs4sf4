@@ -1,0 +1,49 @@
+{% comment %}
+
+  This snippet adds Open Graph markup for pages that share content on Facebook and other supported sites, including
+  Pinterest for their "Rich Pins" feature.
+
+  You can check that your Open Graph data is being read by Facebook using their debug tool:
+   - https://developers.facebook.com/tools/debug
+
+  For more information on the Open Graph in general, check out:
+   - http://ogp.me/
+   - http://developers.facebook.com/docs/opengraph/
+
+  For more information on Pinterest Rich Pins, check out:
+   - https://developers.pinterest.com/rich_pins/
+
+{% endcomment %}
+{% if template contains 'product' %}
+  <meta property="og:type" content="product" />
+  <meta property="og:title" content="{{ product.title | escape }}" />
+  <meta property="og:description" content="{{ product.description | strip_html | truncatewords: 100, '' | escape }}" />
+  <meta property="og:url" content="{{ canonical_url }}" />
+
+  {% for image in product.images limit:6 %}
+  <meta property="og:image" content="http:{{ image | product_img_url: 'grande' }}" />
+  {% endfor %}
+
+  <meta property="og:price:amount" content="{{ product.price | money_without_currency }}" />
+  <meta property="og:price:currency" content="{{ shop.currency }}" />
+  {% if product.compare_at_price_max %}
+  <meta property="og:price:standard_amount" content="{{ product.compare_at_price_max | money_without_currency }}" />
+  {% endif %}
+
+  <meta property="og:availability" content="{% if product.available %}instock{% else %}{% endif %}" />
+{% elsif template contains 'article' %}
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="{{ canonical_url }}" />
+  <meta property="og:title" content="{{ article.title | escape }}" />
+  <meta property="og:description" content="{{ article.excerpt_or_content | strip_html | truncatewords: 100, '' | escape  }}" />
+  <meta property="article:published_time" content="{{ article.published_at | date:"%Y-%m-%dT%H:%M:%SZ" }}" />
+  {% for tag in article.tags %}
+  <meta property="article:tag" content="{{ tag }}" />
+  {% endfor %}
+  {% if article.content contains '<img' %}
+    {% assign src = article.content | split: 'src="' %}
+    {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn' | replace: 'http:http://', 'http://' | remove: 'https:'  %}
+    {% if src %}<meta property="og:image" content="{{ src }}" />{% endif %}
+ {% endif %}
+{% endif %}
+<meta property="og:site_name" content="{{ shop.name | escape }}" />
