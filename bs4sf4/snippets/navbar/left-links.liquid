@@ -1,0 +1,44 @@
+{% comment %}
+  TODO
+{% endcomment %}
+{% unless linklists.main-menu.links.size == 0 %}
+<ul class="nav navbar-nav">
+  {% for link in linklists.main-menu.links %}
+
+    {% comment %}
+      ************************************************************
+      Check to see if this menu link has a child menu.
+      If so, the "has_dropdown" variable is set to "true".
+      ************************************************************
+    {% endcomment %}
+    {% assign child_list_handle = link.title | handle %}
+    {% if linklists[child_list_handle].links.size > 0 %}{% assign has_dropdown = true %}{% else %}{% assign has_dropdown = false %}{% endif %}
+
+    {% comment %}
+      ************************************************************
+      Render the menu link, adding dropdown attributes as required
+      if the has_dropdown variable is set.
+      ************************************************************
+    {% endcomment %}
+    <li class="{% if link.active %}active{% endif %} {% if has_dropdown %}dropdown{% endif %}">
+      <a href="{{ link.url }}" {% if has_dropdown %}class="dropdown-toggle" data-toggle="dropdown"{% endif %}>
+        {{ link.title | escape }}{% if has_dropdown %} <span class="caret"></span>{% endif %}
+      </a>
+
+      {% comment %}
+        ************************************************************
+        Render the dropdown menu if present.
+        ************************************************************
+      {% endcomment %}
+      {% if has_dropdown %}
+      <ul class="dropdown-menu" role="menu">
+        {% for child_link in linklists[child_list_handle].links %}
+          <li><a href="{{ child_link.url }}">{{ child_link.title | escape }}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </li>
+
+  {% endfor %}
+</ul>
+{% endunless %}

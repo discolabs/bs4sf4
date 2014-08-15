@@ -1,0 +1,20 @@
+---
+Navigation Bar:
+
+  Navigation Bar:
+    notitle: true
+
+    Navigation Bar Style:
+      name: navbar_style
+      type: select
+      options:
+        default: "Default"
+        inverse: "Inverse"
+
+    Navigation Bar Position:
+      name: navbar_position
+      type: select
+      options:
+        static-top: "Scroll with Page"
+        fixed-top: "Fixed to Top"
+        fixed-bottom: "Fixed to Bottom"

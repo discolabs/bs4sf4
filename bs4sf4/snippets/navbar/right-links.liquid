@@ -1,0 +1,41 @@
+{% comment %}
+  TODO
+{% endcomment %}
+<ul class="nav navbar-nav navbar-right">
+  {% comment %}
+    ************************************************************
+    Render a link to the cart.
+    ************************************************************
+  {% endcomment %}
+  <li>
+    <a href="/cart">{{ 'cart.cart' | t }} ({{ cart.total_price | money }})</a>
+  </li>
+
+  {% comment %}
+    ************************************************************
+    If customer account are enabled, render a login link.
+    If the customer is logged in, render a dropdown with a link
+    to their account, or to log out.
+    ************************************************************
+  {% endcomment %}
+  {% if shop.customer_accounts_enabled %}
+  {% if customer %}
+    <li class="dropdown">
+      <a href="/account">{{ customer.first_name | escape }} {{ customer.last_name | escape }} <span class="caret"></span></a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="/account">{{ 'customer.account.my_account' | t }}</a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="/account/logout">{{ 'customer.account.log_out' | t }}</a>
+        </li>
+      </ul>
+    </li>
+  {% else %}
+    <li>
+      <a href="/account/login">{{ 'customer.account.log_in' | t }}</a>
+    </li>
+  {% endif %}
+  {% endif %}
+</ul>

@@ -1,0 +1,27 @@
+{% comment %}
+  TODO
+{% endcomment %}
+<nav class="navbar navbar-{{ settings.navbar_style }} navbar-{{ settings.navbar_position }}" role="navigation">
+  <div class="container-fluid">
+
+    <!-- Brand and mobile toggle button -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{{ shop.url }}" title="{{ shop.name | escape }}">
+        {{ shop.name | escape }}
+      </a>
+    </div>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      {% include 'navbar-left-links' %}
+      {% include 'navbar-right-links' %}
+    </div>
+
+  </div>
+</nav>

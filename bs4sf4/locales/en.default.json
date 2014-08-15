@@ -4,9 +4,17 @@
   "collections": {},
   "products": {},
   "contact": {},
-  "customer": {},
+  "customer": {
+    "account": {
+      "my_account": "My Account",
+      "log_in": "Log In",
+      "log_out": "Log Out"
+    }
+  },
   "gift_cards": {},
   "home_page": {},
-  "cart": {},
+  "cart": {
+    "cart": "Cart"
+  },
   "layout": {}
 }
