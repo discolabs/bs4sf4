@@ -58,6 +58,17 @@ module.exports = (grunt) ->
         src: 'bower_components/bootstrap/dist/js/bootstrap.min.js'
         dest: 'theme/assets/bootstrap.min.js'
 
+    # Compression to a .zip for direct upload to Shopify Admin.
+    compress:
+      zip:
+        options:
+          archive: 'dist/bs4sf-v4.zip'
+        files: [
+          expand: true
+          cwd: 'theme'
+          src: ['assets/**', 'config/**', 'layout/**', 'locales/**', 'snippets/**', 'templates/**']
+        ]
+
     # Watch task.
     watch:
       less:
@@ -80,6 +91,7 @@ module.exports = (grunt) ->
         tasks: ['copy:locales']
 
   # Load tasks made available through NPM.
+  grunt.loadNpmTasks 'grunt-contrib-compress'
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-less'
@@ -87,6 +99,6 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-shopify-theme-settings'
 
-  # Register tasks make available through the Gruntfile.
+  # Register tasks made available through the Gruntfile.
   grunt.registerTask 'build',   ['less', 'shopify_theme_settings', 'copy']
   grunt.registerTask 'default', ['build', 'watch']
