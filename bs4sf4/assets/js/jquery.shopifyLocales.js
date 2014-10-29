@@ -61,7 +61,11 @@
    * @param locale
    */
   function getTranslation(keyPath, locale) {
-    return eval('_locales.' + locale + '.' + keyPath);
+    var translation = eval('_locales.' + locale + '.' + keyPath);
+    if(!translation || (translation === undefined)) {
+      return null;
+    }
+    return translation;
   }
 
   /**
@@ -74,7 +78,10 @@
     var $element = $(element),
         keyPath = $element.data('translate');
 
-    $(element).text(getTranslation(keyPath, locale));
+    var translation = getTranslation(keyPath, locale);
+    if(translation) {
+      $(element).text(translation);
+    }
   }
 
   /**

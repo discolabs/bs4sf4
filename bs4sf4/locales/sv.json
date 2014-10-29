@@ -11,13 +11,19 @@
   "contact": {},
   "customer": {
     "account": {
-      "my_account": "Min Konto",
+      "my_account": "Mitt Konto",
       "log_in": "Logga In",
       "log_out": "Logga Ut"
     }
   },
   "gift_cards": {},
-  "home_page": {},
+  "home_page": {
+    "menus": {
+      "home": "Hem",
+      "features": "Verktyg",
+      "styles": "Mönster"
+    }
+  },
   "cart": {
     "cart": "Kundvagn"
   },

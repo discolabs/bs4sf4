@@ -22,7 +22,7 @@
     {% endcomment %}
     <li class="{% if link.active %}active{% endif %} {% if has_dropdown %}dropdown{% endif %}">
       <a href="{{ link.url }}" {% if has_dropdown %}class="dropdown-toggle" data-toggle="dropdown"{% endif %}>
-        {{ link.title | escape }}{% if has_dropdown %} <span class="caret"></span>{% endif %}
+        <span data-translate="home_page.menus.{{ link.title | handle }}">{{ link.title | escape }}</span>{% if has_dropdown %} <span class="caret"></span>{% endif %}
       </a>
 
       {% comment %}
@@ -33,7 +33,7 @@
       {% if has_dropdown %}
       <ul class="dropdown-menu" role="menu">
         {% for child_link in linklists[child_list_handle].links %}
-          <li><a href="{{ child_link.url }}">{{ child_link.title | escape }}</a></li>
+          <li><a href="{{ child_link.url }}" data-translate="home_page.menus.{{ child_link.title | handle }}">{{ child_link.title | escape }}</a></li>
         {% endfor %}
       </ul>
       {% endif %}

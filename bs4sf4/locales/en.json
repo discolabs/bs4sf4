@@ -17,7 +17,13 @@
     }
   },
   "gift_cards": {},
-  "home_page": {},
+  "home_page": {
+    "menus": {
+      "home": "Home",
+      "features": "Features",
+      "styles": "Styles"
+    }
+  },
   "cart": {
     "cart": "Cart"
   },
