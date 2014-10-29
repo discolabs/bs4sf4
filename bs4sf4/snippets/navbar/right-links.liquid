@@ -8,7 +8,7 @@
     ************************************************************
   {% endcomment %}
   <li>
-    <a href="/cart">{{ 'cart.cart' | t }} ({{ cart.total_price | money }})</a>
+    <a href="/cart"><span data-translate="cart.cart">{{ 'cart.cart' | t }}</span> ({{ cart.total_price | money }})</a>
   </li>
 
   {% comment %}
@@ -24,18 +24,29 @@
       <a href="/account">{{ customer.first_name | escape }} {{ customer.last_name | escape }} <span class="caret"></span></a>
       <ul class="dropdown-menu" role="menu">
         <li>
-          <a href="/account">{{ 'customer.account.my_account' | t }}</a>
+          <a href="/account" data-translate="customer.account.my_account">{{ 'customer.account.my_account' | t }}</a>
         </li>
         <li class="divider"></li>
         <li>
-          <a href="/account/logout">{{ 'customer.account.log_out' | t }}</a>
+          <a href="/account/logout" data-translate="customer.account.log_out">{{ 'customer.account.log_out' | t }}</a>
         </li>
       </ul>
     </li>
   {% else %}
     <li>
-      <a href="/account/login">{{ 'customer.account.log_in' | t }}</a>
+      <a href="/account/login" data-translate="customer.account.log_in">{{ 'customer.account.log_in' | t }}</a>
     </li>
   {% endif %}
   {% endif %}
 </ul>
+
+<form class="navbar-form navbar-right">
+    <div class="form-group">
+        <select class="form-control" data-update="locale">
+            {% assign supported_locales = 'en,sv' | split: ',' %}
+            {% for locale in supported_locales %}
+                <option value="{{ locale }}" data-translate="general.locales.{{ locale }}" {% if shop.locale == locale %}selected="selected"{% endif %}>{{ 'general.locales.' | append: locale | t }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</form>

@@ -51,12 +51,23 @@ module.exports = (grunt) ->
         cwd: 'locales'
         src: '*.json'
         dest: 'theme/locales'
+      locales_as_assets:
+        expand: true
+        cwd: 'locales'
+        src: '*.json'
+        dest: 'theme/assets'
       jquery:
         src: 'bower_components/jquery/dist/jquery.min.js'
         dest: 'theme/assets/jquery.min.js'
       bootstrapjs:
         src: 'bower_components/bootstrap/dist/js/bootstrap.min.js'
         dest: 'theme/assets/bootstrap.min.js'
+      assets:
+        expand: true
+        flatten: true
+        cwd: 'assets'
+        src: ['**/*.{css,js,eot,ttf,woff}']
+        dest: 'theme/assets'
 
     # Compression to a .zip for direct upload to Shopify Admin.
     compress:
@@ -88,7 +99,10 @@ module.exports = (grunt) ->
         tasks: ['copy:templates']
       locales:
         files: ['locales/*.json']
-        tasks: ['copy:locales']
+        tasks: ['copy:locales', 'copy:locales_as_assets']
+      assets:
+        files: ['assets/**/*.{css,js,eot,ttf,woff}']
+        tasks: ['copy:assets']
 
   # Load tasks made available through NPM.
   grunt.loadNpmTasks 'grunt-contrib-compress'

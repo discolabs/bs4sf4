@@ -1,5 +1,10 @@
 {
-  "general": {},
+  "general": {
+    "locales": {
+      "en": "Engelska (US)",
+      "sv": "Svenska"
+    }
+  },
   "blogs": {},
   "collections": {},
   "products": {},

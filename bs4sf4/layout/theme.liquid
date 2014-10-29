@@ -25,5 +25,12 @@
     <!-- Javascript -->
     {{ 'jquery.min.js' | asset_url | script_tag }}
     {{ 'bootstrap.min.js' | asset_url | script_tag }}
+    {{ 'jquery.shopifyLocales.js' | asset_url | script_tag }}
+
+    <script type="text/javascript">
+      jQuery(function() {
+        Shopify.Locales.init("{{ shop.locale }}", "{{ shop.locale | append: '.json' | asset_url }}");
+      });
+    </script>
   </body>
 </html>
