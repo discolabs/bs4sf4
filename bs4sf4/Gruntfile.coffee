@@ -101,7 +101,7 @@ module.exports = (grunt) ->
         files: ['locales/*.json']
         tasks: ['copy:locales', 'copy:locales_as_assets']
       assets:
-        files: ['assets/**/*.{css,js,eot,ttf,woff}']
+        files: ['assets/**/*.{css,js,eot,ttf,woff,png}']
         tasks: ['copy:assets']
 
   # Load tasks made available through NPM.
