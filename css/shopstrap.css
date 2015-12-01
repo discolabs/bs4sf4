@@ -95,7 +95,7 @@ body {
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .sprite {
     background-image: url('../img/sprite@2x.png');
-    background-size: 160px 64px;
+    background-size: 416px 64px;
   }
 }
 
